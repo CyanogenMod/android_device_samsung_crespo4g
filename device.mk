@@ -41,4 +41,5 @@
 # application settings that are stored in resourced.
 
 #Changes on this file should go above this line
+$(call inherit-product-if-exists, vendor/samsung/crespo/device4g-vendor.mk)
 $(call inherit-product, device/samsung/crespo/device.mk)
