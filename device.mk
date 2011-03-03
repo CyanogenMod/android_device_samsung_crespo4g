@@ -40,6 +40,12 @@
 # of hardware-specific resource overrides, typically the frameworks and
 # application settings that are stored in resourced.
 
+# Telephony property for CDMA
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.cdma.home.operator.numeric=310120 \
+    ro.cdma.home.operator.alpha=Sprint \
+    ro.telephony.default_network=4
+
 #Changes on this file should go above this line
 $(call inherit-product-if-exists, vendor/samsung/crespo/device4g-vendor.mk)
 $(call inherit-product, device/samsung/crespo/device.mk)
