@@ -22,3 +22,5 @@
 include device/samsung/crespo/BoardConfig.mk
 -include vendor/samsung/crespo/BoardConfig4gVendor.mk
 
+TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_crespo4g
+TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/crespo4g
