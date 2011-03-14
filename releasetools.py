@@ -12,105 +12,67 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import sha
 import re
 
 import common
 
-def WriteRadioPatch(info, fn, size):
+def WriteRadio(info, radio_file):
+  radio_file.AddToZip(info.output_zip)
+  info.script.Print("Writing radio...")
   info.script.AppendExtra(
-    ('assert(samsung.write_firmware_image(package_extract_file("%s"),'
-     '"%s"));') % (fn, size))
+      'assert(samsung.update_modem(package_extract_file("%s")));\n' %
+      (radio_file.name,))
 
-def FindRadioPatch(zipfile):
-  try:
-    radio_img = zipfile.read("RADIO/radio.pr.img.p")
-  except KeyError:
-    print "no radio.pr.img.p in target_files; skipping install"
-    return None
-  else:
-    return radio_img
+def WriteBootloader(info, bootloader_file):
+  bootloader_file.AddToZip(info.output_zip)
+  info.script.Print("Writing bootloader...")
+  info.script.WriteRawImage("/bootloader", bootloader_file.name)
 
-def FindRadio(zipfile):
+def FindImage(zipfile, basename):
   matches = []
   for name in zipfile.namelist():
-    if re.match(r"^RADIO/radio[.](.+[.])?img$", name):
-      matches.append(name)
+    m = re.match(r"^RADIO/(" + basename + "[.](.+[.])?img)$", name)
+    if m:
+      matches.append((name, m.group(1)))
   if len(matches) > 1:
     raise ValueError("multiple radio images in target-files zip!")
   if matches:
-    print "using %s as radio.img" % (matches[0],)
-    return zipfile.read(matches[0])
+    matches = matches[0]
+    print "using %s as %s" % matches
+    return common.File(matches[1], zipfile.read(matches[0]))
   else:
     return None
 
 def FullOTA_InstallEnd(info):
-  try:
-    bootloader_img = info.input_zip.read("RADIO/bootloader.pr.img")
-  except KeyError:
-    print "full-no bootloader.pr.img in target_files; skipping install"
+  bootloader_img = FindImage(info.input_zip, "bootloader")
+  if bootloader_img:
+    WriteBootloader(info, bootloader_img)
   else:
-    common.ZipWriteStr(info.output_zip, "bootloader.pr.img", bootloader_img)
-    info.script.Print("Writing bootloader...")
-    info.script.WriteRawImage("/bootloader", "bootloader.pr.img")
+    print "no bootloader in target_files; skipping install"
 
-  radio_img = FindRadio(info.input_zip)
-  if not radio_img:
-    print "full-no radio.pr.img in target_files; skipping install"
+  radio_img = FindImage(info.input_zip, "radio")
+  if radio_img:
+    WriteRadio(info, radio_img)
   else:
-    print "full-radio.pr.img in target_files; included"
-    common.ZipWriteStr(info.output_zip, "radio.pr.img", radio_img)
-    info.script.Print("Writing radio...")
-    WriteRadioPatch(info, "radio.pr.img", len(radio_img))
-
-def IncrementalOTA_VerifyEnd(info):
-  radio_img_p = FindRadioPatch(info.target_zip)
-  if not radio_img_p: return
-  info.script.CacheFreeSpaceCheck(len(radio_img_p))
+    print "no radio in target_files; skipping install"
 
 def IncrementalOTA_InstallEnd(info):
-  try:
-    target_bootloader_img = info.target_zip.read("RADIO/bootloader.pr.img")
-    try:
-      source_bootloader_img = info.source_zip.read("RADIO/bootloader.pr.img")
-    except KeyError:
-      source_bootloader_img = None
+  tf = FindImage(info.target_zip, "bootloader")
+  sf = FindImage(info.source_zip, "bootloader")
 
-    if source_bootloader_img == target_bootloader_img:
-      print "inc-bootloader unchanged; skipping"
-    else:
-      common.ZipWriteStr(info.output_zip, "bootloader.pr.img", target_bootloader_img)
-      info.script.Print("Writing bootloader...")
-      info.script.WriteRawImage("/bootloader", "bootloader.pr.img")
+  if not tf:
+    print "no bootloader image in target target_files; skipping"
+  elif sf and tf.sha1 == sf.sha1:
+    print "bootloader image unchanged; skipping"
+  else:
+    WriteBootloader(info, sf)
 
-  except KeyError:
-    print "inc-no bootloader.pr.img in target target_files; skipping install"
+  tf = FindImage(info.target_zip, "radio")
+  sf = FindImage(info.source_zip, "radio")
 
-  try:
-    tf = common.File("radio.pr.img", info.target_zip.read("RADIO/radio.pr.img"))
-    try:
-      sf = common.File("radio.pr.img", info.source_zip.read("RADIO/radio.pr.img"))
-
-      if tf.sha1 == sf.sha1:
-        print "inc-radio image unchanged; skipping"
-      else:
-        diff = FindRadioPatch(info.target_zip)
-        if not diff:
-          print "inc-no radio.pr.img.p in target target_files;  include the whole target"
-          tf.AddToZip(info.output_zip)
-          info.script.Print("Writing radio...")
-          WriteRadioPatch(info, "radio.pr.img", tf.size)
-        else:
-          print "inc-radio.pr.img.p in target target_files"
-          common.ZipWriteStr(info.output_zip, "radio.pr.img.p", diff)
-          info.script.Print("Patching radio...")
-          WriteRadioPatch(info, "radio.pr.img.p", len(diff))
-
-    except KeyError:
-      # failed to read SOURCE radio image: include the whole target
-      # radio image.
-      print "inc-no radio.pr.img in target target_files; skipping install"
-
-  except KeyError:
-    # failed to read TARGET radio image: don't include any radio in update.
-    print "inc-no radio.img in target target_files; skipping install"
+  if not tf:
+    print "no radio image in target target_files; skipping"
+  elif sf and tf.sha1 == sf.sha1:
+    print "radio image unchanged; skipping"
+  else:
+    WriteRadio(info, tf)

@@ -54,29 +54,34 @@ struct dpram_firmware {
 	int is_delta;
 };
 
-Value* WriteRadioFirmwareImageFn(const char* name, State* state,
-			int argc, Expr* argv[]) {
+Value* UpdateModemFn(const char* name, State* state,
+                     int argc, Expr* argv[]) {
 
-    struct dpram_firmware  fw;
+    struct dpram_firmware fw;
     struct stat_info st;
     int ofd = -1;
     int err = -1;
     int prev_pct = -1;
 
-    if (argc != 2)
-        return ErrorAbort(state, "%s() expects 2 args, got %d", name, argc);
+    if (argc != 1)
+        return ErrorAbort(state, "%s() expects 1 arg, got %d", name, argc);
 
-    Value** radio = ReadValueVarArgs(state, 1, argv);
-    if (radio == NULL) {
+    Value* radio;
+    if (ReadValueArgs(state, argv, 1, &radio) != 0) {
+        return NULL;
+    }
+    if (radio->type != VAL_BLOB) {
+        ErrorAbort(state, "argument to %s() has wrong type", name);
+        FreeValue(radio);
         return NULL;
     }
 
-    if (radio[0]->size < 0) {
+    if (radio->size <= 0) {
         fprintf(stderr, "%s(): no file contents received", name);
         return StringValue(strdup(""));
     }
 
-    printf("WriteFirmwareImageFn with %d bytes\n", radio[0]->size);
+    printf("UpdateModemFn with %d bytes\n", radio->size);
 
     /* open modem device */
     ofd = open("/dev/modem_ctl", O_RDWR);
@@ -87,8 +92,8 @@ Value* WriteRadioFirmwareImageFn(const char* name, State* state,
     }
 
     /* initiate firmware update */
-    fw.firmware = radio[0]->data;
-    fw.size = radio[0]->size;
+    fw.firmware = radio->data;
+    fw.size = radio->size;
     fw.is_delta = 0;
     err = ioctl(ofd, IOCTL_MODEM_FW_UPDATE, &fw);
 
@@ -118,15 +123,14 @@ Value* WriteRadioFirmwareImageFn(const char* name, State* state,
     printf("Firmware Update is Successful!\n");
 
 out:
-    FreeValue(radio[0]);
+    FreeValue(radio);
     if (ofd >= 0)
         close(ofd);
 
     return StringValue(strdup(err == 0 ? "t" : ""));
 }
 
-
 void Register_librecovery_updater_crespo4g() {
     printf("Register_librecovery_updater_crespo4g is called\n");
-    RegisterFunction("samsung.write_firmware_image", WriteRadioFirmwareImageFn);
+    RegisterFunction("samsung.update_modem", UpdateModemFn);
 }
