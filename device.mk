@@ -50,6 +50,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
        ro.wimax.interface=uwbr0
 
+# Hardware-specific features
+PRODUCT_COPY_FILES += \
+    frameworks/base/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml
+
 #Changes on this file should go above this line
 $(call inherit-product-if-exists, vendor/samsung/crespo/device4g-vendor.mk)
-$(call inherit-product, device/samsung/crespo/device.mk)
+$(call inherit-product, device/samsung/crespo/device_base.mk)
