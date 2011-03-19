@@ -22,6 +22,12 @@ on boot
 # change permission for uart_switch
     chown radio radio /sys/class/sec/uart_switch/UART_SEL/value
     chmod 660 /sys/class/sec/uart_switch/UART_SEL/value
+    chown radio radio /sys/class/sec/uart_switch/UART_SEL1/value
+    chmod 660 /sys/class/sec/uart_switch/UART_SEL1/value
+
+# change permission for usb_switch
+    chown radio radio /sys/bus/i2c/drivers/fsa9480/7-0025/switch
+    chmod 660 /sys/bus/i2c/drivers/fsa9480/7-0025/switch
 
 # create data/gps for GPS demon
     mkdir /data/gps 770 gps system
