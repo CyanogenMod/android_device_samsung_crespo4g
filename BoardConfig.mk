@@ -17,10 +17,16 @@
 # Product-specific compile-time definitions.
 #
 
-# Set this up here so that BoardVendorConfig.mk can override it
+# Set this up here so that BoardConfigVendor.mk can override it
+BOARD_USES_GENERIC_AUDIO := false
 
-include device/samsung/crespo/BoardConfig.mk
+BOARD_USES_LIBSECRIL_STUB := true
+
+BOARD_NO_PAGE_FLIPPING := true
+BOARD_NO_32BPP := true
+
 -include vendor/samsung/crespo/BoardConfig4gVendor.mk
+include device/samsung/crespo/BoardConfigCommon.mk
 
 TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_crespo4g
 TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/crespo4g
