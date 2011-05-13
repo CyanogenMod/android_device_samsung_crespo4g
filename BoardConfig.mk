@@ -28,5 +28,5 @@ BOARD_NO_32BPP := true
 -include vendor/samsung/crespo/BoardConfig4gVendor.mk
 include device/samsung/crespo/BoardConfigCommon.mk
 
-TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_crespo4g
+#TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_crespo4g
 TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/crespo4g
