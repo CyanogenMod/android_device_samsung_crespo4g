@@ -23,31 +23,6 @@
          interface.  This name is in the ComponentName flattened format (package/class)  -->
     <string name="config_statusBarComponent">com.android.systemui/com.android.systemui.statusbar.StatusBarService</string>
 
-    <!-- Do not translate. Defines the slots for the right-hand side icons.  That is to say, the
-         icons in the status bar that are not notifications. -->
-    <string-array name="config_statusBarIcons">
-       <item><xliff:g id="id">ime</xliff:g></item>
-       <item><xliff:g id="id">sync_failing</xliff:g></item>
-       <item><xliff:g id="id">sync_active</xliff:g></item>
-       <item><xliff:g id="id">gps</xliff:g></item>
-       <item><xliff:g id="id">bluetooth</xliff:g></item>
-       <item><xliff:g id="id">nfc</xliff:g></item>
-       <item><xliff:g id="id">tty</xliff:g></item>
-       <item><xliff:g id="id">speakerphone</xliff:g></item>
-       <item><xliff:g id="id">mute</xliff:g></item>
-       <item><xliff:g id="id">volume</xliff:g></item>
-       <item><xliff:g id="id">wifi</xliff:g></item>
-       <item><xliff:g id="id">wimax</xliff:g></item>
-       <item><xliff:g id="id">cdma_eri</xliff:g></item>
-       <item><xliff:g id="id">data_connection</xliff:g></item>
-       <item><xliff:g id="id">phone_evdo_signal</xliff:g></item>
-       <item><xliff:g id="id">phone_signal</xliff:g></item>
-       <item><xliff:g id="id">battery</xliff:g></item>
-       <item><xliff:g id="id">alarm_clock</xliff:g></item>
-       <item><xliff:g id="id">secure</xliff:g></item>
-       <item><xliff:g id="id">clock</xliff:g></item>
-    </string-array>
-
     <!-- This string array should be overridden by the device to present a list of network
          attributes.  This is used by the connectivity manager to decide which networks can coexist
          based on the hardware -->
