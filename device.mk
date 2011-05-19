@@ -55,6 +55,11 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
     device/samsung/crespo4g/init.herring.rc:root/init.herring.rc
 
+# GPS config
+PRODUCT_COPY_FILES += \
+    device/samsung/crespo4g/gps.conf:system/etc/gps.conf \
+    device/samsung/crespo4g/gps.xml:system/vendor/etc/gps.xml
+
 # APNs for 3G network access
 PRODUCT_COPY_FILES += \
     device/samsung/crespo4g/4g-apns-conf.xml:system/etc/apns-conf.xml
