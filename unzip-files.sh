@@ -24,7 +24,6 @@ unzip -j -o ../../../${DEVICE}_update.zip system/app/ODB.apk -d ../../../vendor/
 unzip -j -o ../../../${DEVICE}_update.zip system/app/SprintMenu.apk -d ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/app/SystemUpdateUI.apk -d ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/app/WiMAXSettings.apk -d ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
-unzip -j -o ../../../${DEVICE}_update.zip system/etc/gps.conf -d ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/lib/libpn544_fw.so -d ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/lib/libsecril-client.so -d ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/lib/libWiMAXNativeODB.so -d ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
@@ -32,11 +31,8 @@ unzip -j -o ../../../${DEVICE}_update.zip system/vendor/bin/gpsd -d ../../../ven
 chmod 755 ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/gpsd
 unzip -j -o ../../../${DEVICE}_update.zip system/vendor/bin/pvrsrvinit -d ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 chmod 755 ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/pvrsrvinit
-unzip -j -o ../../../${DEVICE}_update.zip system/vendor/etc/gps.xml -d ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/vendor/firmware/bcm4329.hcd -d ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/vendor/firmware/cypress-touchkey.bin -d ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
-unzip -j -o ../../../${DEVICE}_update.zip system/vendor/firmware/nvram_net.txt -d ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
-unzip -j -o ../../../${DEVICE}_update.zip system/vendor/firmware/samsung_mfc_fw.bin -d ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/vendor/firmware/wimaxfw.bin -d ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/vendor/firmware/wimaxloader.bin -d ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/vendor/firmware/wimax_boot.bin -d ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
@@ -85,17 +81,13 @@ PRODUCT_COPY_FILES += \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/SprintMenu.apk:system/app/SprintMenu.apk \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/SystemUpdateUI.apk:system/app/SystemUpdateUI.apk \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/WiMAXSettings.apk:system/app/WiMAXSettings.apk \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/gps.conf:system/etc/gps.conf \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libpn544_fw.so:system/lib/libpn544_fw.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libsecril-client.so:system/lib/libsecril-client.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libWiMAXNativeODB.so:system/lib/libWiMAXNativeODB.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/gpsd:system/vendor/bin/gpsd \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/pvrsrvinit:system/vendor/bin/pvrsrvinit \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/gps.xml:system/vendor/etc/gps.xml \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/bcm4329.hcd:system/vendor/firmware/bcm4329.hcd \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/cypress-touchkey.bin:system/vendor/firmware/cypress-touchkey.bin \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/nvram_net.txt:system/vendor/firmware/nvram_net.txt \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/samsung_mfc_fw.bin:system/vendor/firmware/samsung_mfc_fw.bin \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/wimaxfw.bin:system/vendor/firmware/wimaxfw.bin \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/wimaxloader.bin:system/vendor/firmware/wimaxloader.bin \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/wimax_boot.bin:system/vendor/firmware/wimax_boot.bin \\

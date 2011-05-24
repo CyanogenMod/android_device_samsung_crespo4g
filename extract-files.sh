@@ -24,7 +24,6 @@ adb pull /system/app/ODB.apk ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/O
 adb pull /system/app/SprintMenu.apk ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/SprintMenu.apk
 adb pull /system/app/SystemUpdateUI.apk ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/SystemUpdateUI.apk
 adb pull /system/app/WiMAXSettings.apk ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/WiMAXSettings.apk
-adb pull /system/etc/gps.conf ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/gps.conf
 adb pull /system/lib/libpn544_fw.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libpn544_fw.so
 adb pull /system/lib/libsecril-client.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libsecril-client.so
 adb pull /system/lib/libWiMAXNativeODB.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libWiMAXNativeODB.so
@@ -32,11 +31,8 @@ adb pull /system/vendor/bin/gpsd ../../../vendor/$MANUFACTURER/$DEVICE/proprieta
 chmod 755 ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/gpsd
 adb pull /system/vendor/bin/pvrsrvinit ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/pvrsrvinit
 chmod 755 ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/pvrsrvinit
-adb pull /system/vendor/etc/gps.xml ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/gps.xml
 adb pull /system/vendor/firmware/bcm4329.hcd ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/bcm4329.hcd
 adb pull /system/vendor/firmware/cypress-touchkey.bin ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/cypress-touchkey.bin
-adb pull /system/vendor/firmware/nvram_net.txt ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/nvram_net.txt
-adb pull /system/vendor/firmware/samsung_mfc_fw.bin ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/samsung_mfc_fw.bin
 adb pull /system/vendor/firmware/wimaxfw.bin ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/wimaxfw.bin
 adb pull /system/vendor/firmware/wimaxloader.bin ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/wimaxloader.bin
 adb pull /system/vendor/firmware/wimax_boot.bin ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/wimax_boot.bin
@@ -85,17 +81,13 @@ PRODUCT_COPY_FILES += \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/SprintMenu.apk:system/app/SprintMenu.apk \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/SystemUpdateUI.apk:system/app/SystemUpdateUI.apk \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/WiMAXSettings.apk:system/app/WiMAXSettings.apk \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/gps.conf:system/etc/gps.conf \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libpn544_fw.so:system/lib/libpn544_fw.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libsecril-client.so:system/lib/libsecril-client.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libWiMAXNativeODB.so:system/lib/libWiMAXNativeODB.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/gpsd:system/vendor/bin/gpsd \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/pvrsrvinit:system/vendor/bin/pvrsrvinit \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/gps.xml:system/vendor/etc/gps.xml \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/bcm4329.hcd:system/vendor/firmware/bcm4329.hcd \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/cypress-touchkey.bin:system/vendor/firmware/cypress-touchkey.bin \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/nvram_net.txt:system/vendor/firmware/nvram_net.txt \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/samsung_mfc_fw.bin:system/vendor/firmware/samsung_mfc_fw.bin \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/wimaxfw.bin:system/vendor/firmware/wimaxfw.bin \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/wimaxloader.bin:system/vendor/firmware/wimaxloader.bin \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/wimax_boot.bin:system/vendor/firmware/wimax_boot.bin \\
