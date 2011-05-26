@@ -17,4 +17,8 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="additional_system_update">com.samsung.update</string>
     <string name="additional_system_update_menu">com.samsung.update.UpdateSetting</string>
+
+    <!-- If false, MIN is displayed. If true, MSID is displayed. -->
+    <bool name="config_msid_enable">true</bool>
+
 </resources>
