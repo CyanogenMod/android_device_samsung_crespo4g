@@ -62,6 +62,10 @@ on fs
 # Permissions for System Server and daemons.
     chown system system /sys/class/backlight/s5p_bl/brightness
 
+# Define TCP buffer sizes for wimax network
+#   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
+    setprop net.tcp.buffersize.wimax    4096,524288,1048576,4096,16384,110208
+
 service gpsd /system/vendor/bin/gpsd -c /vendor/etc/gps.xml
     user system
     group system inet
