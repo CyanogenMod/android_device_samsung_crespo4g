@@ -21,13 +21,9 @@ MANUFACTURER=samsung
 
 mkdir -p ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/app/ODB.apk ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/ODB.apk
-adb pull /system/app/ODB.odex ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/ODB.odex
 adb pull /system/app/SprintMenu.apk ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/SprintMenu.apk
-adb pull /system/app/SprintMenu.odex ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/SprintMenu.odex
 adb pull /system/app/SystemUpdateUI.apk ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/SystemUpdateUI.apk
-adb pull /system/app/SystemUpdateUI.odex ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/SystemUpdateUI.odex
 adb pull /system/app/WiMAXSettings.apk ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/WiMAXSettings.apk
-adb pull /system/app/WiMAXSettings.odex ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/WiMAXSettings.odex
 adb pull /system/lib/libpn544_fw.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libpn544_fw.so
 adb pull /system/lib/libsecril-client.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libsecril-client.so
 adb pull /system/lib/libWiMAXNativeODB.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libWiMAXNativeODB.so
@@ -82,13 +78,9 @@ PRODUCT_COPY_FILES := \\
 # All the blobs necessary for crespo4g
 PRODUCT_COPY_FILES += \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/ODB.apk:system/app/ODB.apk \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/ODB.odex:system/app/ODB.odex \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/SprintMenu.apk:system/app/SprintMenu.apk \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/SprintMenu.odex:system/app/SprintMenu.odex \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/SystemUpdateUI.apk:system/app/SystemUpdateUI.apk \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/SystemUpdateUI.odex:system/app/SystemUpdateUI.odex \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/WiMAXSettings.apk:system/app/WiMAXSettings.apk \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/WiMAXSettings.odex:system/app/WiMAXSettings.odex \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libpn544_fw.so:system/lib/libpn544_fw.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libsecril-client.so:system/lib/libsecril-client.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libWiMAXNativeODB.so:system/lib/libWiMAXNativeODB.so \\
