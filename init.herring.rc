@@ -71,6 +71,10 @@ on post-fs-data
 
     setprop vold.post_fs_data_done 1
 
+# Define TCP buffer sizes for wimax network
+#   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
+    setprop net.tcp.buffersize.wimax    4096,524288,1048576,4096,16384,110208
+
 service gpsd /system/vendor/bin/gpsd -c /vendor/etc/gps.xml
     class main
     user system
