@@ -111,7 +111,9 @@ PRODUCT_PACKAGES += \\
     SprintMenu \\
     SystemUpdateUI \\
     WiMAXSettings
+
 EOF
+
 (cat << EOF) | sed s/__DEVICE__/$DEVICE/g | sed s/__MANUFACTURER__/$MANUFACTURER/g > ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/Android.mk
 # Copyright (C) 2011 The Android Open Source Project
 #
