@@ -19,6 +19,20 @@
 # product configuration (apps).
 #
 
+# NFC
+PRODUCT_PACKAGES += \
+        libnfc \
+        libnfc_jni \
+        Nfc
+
+# Live Wallpapers
+PRODUCT_PACKAGES += \
+        LiveWallpapers \
+        LiveWallpapersPicker \
+        MagicSmokeWallpapers \
+        VisualizationWallpapers \
+        librs_jni
+
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # This is where we'd set a backup provider if we had one
