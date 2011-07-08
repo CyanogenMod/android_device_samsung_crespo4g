@@ -23,7 +23,8 @@
 PRODUCT_PACKAGES += \
         libnfc \
         libnfc_jni \
-        Nfc
+        Nfc \
+        Tag
 
 # Live Wallpapers
 PRODUCT_PACKAGES += \
