@@ -19,6 +19,10 @@
 # product configuration (apps).
 #
 
+# Camera
+PRODUCT_PACKAGES := \
+    Camera
+
 # NFC
 PRODUCT_PACKAGES += \
         libnfc \
