@@ -15,8 +15,9 @@
 # limitations under the License.
 
 # 138179 = IRJ89
-ZIP=sojus-ota-138179.zip
-BUILD=irj89
+# 146649 = IRK18
+ZIP=sojus-ota-146649.zip
+BUILD=irk18
 ROOTDEVICE=crespo
 DEVICE=crespo4g
 MANUFACTURER=samsung
