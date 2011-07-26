@@ -51,10 +51,11 @@
 
     <!-- Regex array of allowable upstream ifaces for tethering - for example if you want
          tethering on a new interface called "foo2" add <item>"foo\\d"</item> to the array -->
+    <!-- Interfaces will be prioritized according to the order listed -->
     <string-array translatable="false" name="config_tether_upstream_regexs">
+        <item>"uwbr0"</item>
         <item>"rmnet\\d"</item>
         <item>"eth\\d"</item>
-        <item>"uwbr0"</item>
     </string-array>
 
     <!-- Boolean indicating if we require the use of DUN on mobile for tethering.
@@ -75,4 +76,7 @@
     <string name="config_wimaxServiceClassname">com.android.server.WimaxService</string>
     <!-- Name of the wimax state tracker clas -->
     <string name="config_wimaxStateTrackerClassname">android.net.wimax.WimaxStateTracker</string>
+    <!-- Set to true if the RSSI should always display CDMA signal
+         strength even on EVDO -->
+    <bool name="config_alwaysUseCdmaRssi">true</bool>
 </resources>

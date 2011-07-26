@@ -1,4 +1,4 @@
 require board=herring
-require version-bootloader=D720SPRKC5
-require version-baseband=D720SPRKD8
+require version-bootloader=D720SPRKC5|D720SPRKE1
+require version-baseband=D720SPRKC9|D720SPRKD8|D720SPRKE5
 

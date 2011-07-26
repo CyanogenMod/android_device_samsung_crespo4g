@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2007 The Android Open Source Project
+<!-- Copyright (C) 2011 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -14,11 +14,13 @@
      limitations under the License.
 -->
 
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="additional_system_update">com.samsung.update</string>
-    <string name="additional_system_update_menu">com.samsung.update.UpdateSetting</string>
+<!-- Crespo4g - specific phone app resources. -->
+<resources>
 
-    <!-- If false, MIN is displayed. If true, MSID is displayed. -->
-    <bool name="config_msid_enable">true</bool>
+    <!-- Flag indicating if tty is enabled -->
+    <bool name="tty_enabled">true</bool>
+
+    <!-- Disables Voice Privacy option in the Other call settings section of Call Settings -->
+    <bool name="config_voice_privacy_disable">true</bool>
 
 </resources>
