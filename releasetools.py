@@ -65,7 +65,7 @@ def IncrementalOTA_InstallEnd(info):
   elif sf and tf.sha1 == sf.sha1:
     print "bootloader image unchanged; skipping"
   else:
-    WriteBootloader(info, sf)
+    WriteBootloader(info, tf)
 
   tf = FindImage(info.target_zip, "radio")
   sf = FindImage(info.source_zip, "radio")
