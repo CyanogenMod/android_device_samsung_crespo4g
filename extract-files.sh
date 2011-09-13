@@ -24,8 +24,13 @@ adb pull /system/app/ODB.apk ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/O
 adb pull /system/app/SprintMenu.apk ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/SprintMenu.apk
 adb pull /system/app/SystemUpdateUI.apk ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/SystemUpdateUI.apk
 adb pull /system/app/WiMAXSettings.apk ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/WiMAXSettings.apk
+adb pull /system/etc/permissions/com.google.widevine.software.drm.xml ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/com.google.widevine.software.drm.xml
+adb pull /system/lib/drm/libdrmwvmplugin.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libdrmwvmplugin.so
 adb pull /system/lib/libsecril-client.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libsecril-client.so
 adb pull /system/lib/libWiMAXNativeODB.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libWiMAXNativeODB.so
+adb pull /system/lib/libwvdrm_L3.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libwvdrm_L3.so
+adb pull /system/lib/libwvm.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libwvm.so
+adb pull /system/lib/libWVStreamControlAPI_L3.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libWVStreamControlAPI_L3.so
 adb pull /system/vendor/bin/gpsd ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/gpsd
 chmod 755 ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/gpsd
 adb pull /system/vendor/bin/pvrsrvinit ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/pvrsrvinit
@@ -77,8 +82,13 @@ PRODUCT_COPY_FILES := \\
 
 # All the blobs necessary for crespo4g
 PRODUCT_COPY_FILES += \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/com.google.widevine.software.drm.xml:system/etc/permissions/com.google.widevine.software.drm.xml \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libdrmwvmplugin.so:system/lib/drm/libdrmwvmplugin.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libsecril-client.so:system/lib/libsecril-client.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libWiMAXNativeODB.so:system/lib/libWiMAXNativeODB.so \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libwvdrm_L3.so:system/lib/libwvdrm_L3.so \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libwvm.so:system/lib/libwvm.so \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libWVStreamControlAPI_L3.so:system/lib/libWVStreamControlAPI_L3.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/gpsd:system/vendor/bin/gpsd \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/pvrsrvinit:system/vendor/bin/pvrsrvinit \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/bcm4329.hcd:system/vendor/firmware/bcm4329.hcd \\
