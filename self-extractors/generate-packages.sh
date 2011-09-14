@@ -16,13 +16,14 @@
 
 # 138179 = IRJ89
 # 146649 = IRK18
-ZIP=sojus-ota-146649.zip
-BUILD=irk18
+# 185907 = IRK76
+ZIP=sojus-ota-185907.zip
+BUILD=irk76
 ROOTDEVICE=crespo
 DEVICE=crespo4g
 MANUFACTURER=samsung
 
-for COMPANY in akm broadcom cypress imgtec nxp samsung
+for COMPANY in akm broadcom cypress imgtec nxp samsung widevine
 do
   echo Processing files from $COMPANY
   rm -rf tmp
@@ -83,6 +84,15 @@ do
             system/vendor/lib/libsec-ril.so \
             system/vendor/lib/libSECmWiMAXcAPI.so \
             system/vendor/lib/wimax_service.jar \
+            "
+    ;;
+  widevine)
+    TO_EXTRACT="\
+            system/etc/permissions/com.google.widevine.software.drm.xml \
+            system/lib/drm/libdrmwvmplugin.so \
+            system/lib/libwvdrm_L3.so \
+            system/lib/libwvm.so \
+            system/lib/libWVStreamControlAPI_L3.so \
             "
     ;;
   esac
