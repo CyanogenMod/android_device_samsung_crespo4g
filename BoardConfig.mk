@@ -25,7 +25,13 @@ BOARD_USES_LIBSECRIL_STUB := true
 BOARD_NO_PAGE_FLIPPING := true
 BOARD_NO_32BPP := true
 
+# Kernel Panic Fix
+ARCH_ARM_HAVE_ARMV7A_BUG := true
+
+# Use the non-open-source parts, if they're present
 -include vendor/samsung/crespo/BoardConfig4gVendor.mk
+
+# Use the parts that are common between all crespos
 include device/samsung/crespo/BoardConfigCommon.mk
 
 #TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_crespo4g
