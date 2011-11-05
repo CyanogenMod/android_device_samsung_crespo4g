@@ -60,7 +60,7 @@ PRODUCT_COPY_FILES += \
     device/samsung/crespo4g/4g-apns-conf.xml:system/etc/apns-conf.xml
 
 # Overlay for WiMAX-related settings
-# DEVICE_PACKAGE_OVERLAYS := device/samsung/crespo4g/crespo4g_overlay
+DEVICE_PACKAGE_OVERLAYS := device/samsung/crespo4g/crespo4g_overlay
 
 #Changes on this file should go above this line
 $(call inherit-product-if-exists, vendor/samsung/crespo/device4g-vendor.mk)
