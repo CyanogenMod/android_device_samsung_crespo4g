@@ -68,7 +68,7 @@ PRODUCT_COPY_FILES += \
 DEVICE_PACKAGE_OVERLAYS := device/samsung/crespo4g/overlay
 
 # Overlay for WiMAX-related settings
-# DEVICE_PACKAGE_OVERLAYS := device/samsung/crespo4g/crespo4g_overlay
+DEVICE_PACKAGE_OVERLAYS := device/samsung/crespo4g/crespo4g_overlay
 
 #Changes on this file should go above this line
 $(call inherit-product-if-exists, vendor/samsung/crespo/device4g-vendor.mk)
