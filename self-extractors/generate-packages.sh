@@ -72,12 +72,12 @@ do
     ;;
   samsung)
     TO_EXTRACT="\
-            system/app/ODB.apk \
             system/app/SprintMenu.apk \
             system/app/SystemUpdateUI.apk \
+            system/app/WiMAXHiddenMenu.apk \
             system/app/WiMAXSettings.apk \
             system/lib/libsecril-client.so \
-            system/lib/libWiMAXNativeODB.so \
+            system/lib/libWiMAXNative.so \
             system/vendor/firmware/wimaxfw.bin \
             system/vendor/firmware/wimaxloader.bin \
             system/vendor/firmware/wimax_boot.bin \
