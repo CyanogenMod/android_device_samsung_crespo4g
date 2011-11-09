@@ -20,12 +20,12 @@ DEVICE=crespo4g
 MANUFACTURER=samsung
 
 mkdir -p ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
-adb pull /system/app/ODB.apk ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/ODB.apk
 adb pull /system/app/SprintMenu.apk ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/SprintMenu.apk
 adb pull /system/app/SystemUpdateUI.apk ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/SystemUpdateUI.apk
+adb pull /system/app/WiMAXHiddenMenu.apk ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/WiMAXHiddenMenu.apk
 adb pull /system/app/WiMAXSettings.apk ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/WiMAXSettings.apk
 adb pull /system/lib/libsecril-client.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libsecril-client.so
-adb pull /system/lib/libWiMAXNativeODB.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libWiMAXNativeODB.so
+adb pull /system/lib/libWiMAXNative.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libWiMAXNative.so
 adb pull /system/vendor/bin/gpsd ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/gpsd
 chmod 755 ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/gpsd
 adb pull /system/vendor/bin/pvrsrvinit ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/pvrsrvinit
@@ -78,7 +78,7 @@ PRODUCT_COPY_FILES := \\
 # All the blobs necessary for crespo4g
 PRODUCT_COPY_FILES += \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libsecril-client.so:system/lib/libsecril-client.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libWiMAXNativeODB.so:system/lib/libWiMAXNativeODB.so \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libWiMAXNative.so:system/lib/libWiMAXNative.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/gpsd:system/vendor/bin/gpsd \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/pvrsrvinit:system/vendor/bin/pvrsrvinit \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/bcm4329.hcd:system/vendor/firmware/bcm4329.hcd \\
@@ -107,9 +107,9 @@ PRODUCT_COPY_FILES += \\
 
 # All the apks necessary for crespo4g
 PRODUCT_PACKAGES += \\
-    ODB \\
     SprintMenu \\
     SystemUpdateUI \\
+    WiMAXHiddenMenu \\
     WiMAXSettings
 
 EOF
@@ -136,18 +136,6 @@ LOCAL_PATH:=\$(call my-dir)
 
 # Module makefile rules for apks on crespo4g
 
-# ODB
-
-include \$(CLEAR_VARS)
-
-LOCAL_MODULE := ODB
-LOCAL_SRC_FILES := \$(LOCAL_MODULE).apk
-LOCAL_MODULE_CLASS := APPS
-LOCAL_MODULE_TAGS := optional
-LOCAL_CERTIFICATE := PRESIGNED
-LOCAL_MODULE_SUFFIX := \$(COMMON_ANDROID_PACKAGE_SUFFIX)
-include \$(BUILD_PREBUILT)
-
 # SprintMenu
 
 include \$(CLEAR_VARS)
@@ -165,6 +153,18 @@ include \$(BUILD_PREBUILT)
 include \$(CLEAR_VARS)
 
 LOCAL_MODULE := SystemUpdateUI
+LOCAL_SRC_FILES := \$(LOCAL_MODULE).apk
+LOCAL_MODULE_CLASS := APPS
+LOCAL_MODULE_TAGS := optional
+LOCAL_CERTIFICATE := PRESIGNED
+LOCAL_MODULE_SUFFIX := \$(COMMON_ANDROID_PACKAGE_SUFFIX)
+include \$(BUILD_PREBUILT)
+
+# WiMAXHiddenMenu
+
+include \$(CLEAR_VARS)
+
+LOCAL_MODULE := WiMAXHiddenMenu
 LOCAL_SRC_FILES := \$(LOCAL_MODULE).apk
 LOCAL_MODULE_CLASS := APPS
 LOCAL_MODULE_TAGS := optional
