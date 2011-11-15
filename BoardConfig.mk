@@ -28,6 +28,10 @@ BOARD_NO_32BPP := true
 # Kernel Panic Fix
 ARCH_ARM_HAVE_ARMV7A_BUG := true
 
+# add fpu compilation flags
+TARGET_GLOBAL_CFLAGS += -mtune=cortex-a8 -mfpu=neon -mfloat-abi=softfp
+TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a8 -mfpu=neon -mfloat-abi=softfp
+
 # Use the non-open-source parts, if they're present
 -include vendor/samsung/crespo/BoardConfig4gVendor.mk
 
