@@ -95,7 +95,7 @@
     </integer-array>
 
     <!-- Set and Unsets WiMAX -->
-    <bool name="config_wimaxEnabled">false</bool>
+    <bool name="config_wimaxEnabled">true</bool>
     <!-- Location of the wimax framwork jar location -->
     <string name="config_wimaxServiceJarLocation">/vendor/lib/wimax_service.jar</string>
     <!-- Location of the wimax native library locaiton -->
