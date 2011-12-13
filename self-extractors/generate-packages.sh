@@ -17,8 +17,9 @@
 # 138179 = IRJ89
 # 146649 = IRK18
 # 185907 = IRK76
-ZIP=sojus-ota-185907.zip
-BUILD=irk76
+# 236517 = IML70C
+ZIP=sojus-ota-236517.zip
+BUILD=iml70c
 ROOTDEVICE=crespo
 DEVICE=crespo4g
 MANUFACTURER=samsung
