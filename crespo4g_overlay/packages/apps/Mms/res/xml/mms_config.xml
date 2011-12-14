@@ -26,6 +26,12 @@
     <!-- Maximum message size in bytes for a MMS message -->
     <int name="maxMessageSize">1024000</int>
 
+    <!-- Maximum height for an attached image -->
+    <int name="maxImageHeight">960</int>
+
+    <!-- Maximum width for an attached image -->
+    <int name="maxImageWidth">1280</int>
+
     <!-- UAProf URL -->
     <string name="uaProfUrl">http://device.sprintpcs.com/Samsung/SPH-D720/latest</string>
 
