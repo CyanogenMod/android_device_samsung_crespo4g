@@ -23,11 +23,40 @@
 
 <mms_config version="4">
 
+    <!-- Flag indicating whether MMS should be enabled -->
+    <bool name="enabledMMS">true</bool>
+
     <!-- Maximum message size in bytes for a MMS message -->
     <int name="maxMessageSize">1024000</int>
 
+    <!-- Maximum height for an attached image -->
+    <int name="maxImageHeight">960</int>
+
+    <!-- Maximum width for an attached image -->
+    <int name="maxImageWidth">1280</int>
+
+    <!-- Maximum number of SMS message to save per thread before auto-delete kicks in.
+         This is the default value. -->
+    <int name="defaultSMSMessagesPerThread">500</int>
+
+    <!-- Maximum number of MMS message to save per thread before auto-delete kicks in.
+         This is the default value. -->
+    <int name="defaultMMSMessagesPerThread">50</int>
+
+    <!-- Minimum value for the number of messages kept per conversation. The user can never
+         set the limit below this value. -->
+    <int name="minMessageCountPerThread">10</int>
+
+    <!-- Maximum value for the number of messages kept per conversation. The user can never
+         set the limit above this value. -->
+    <int name="maxMessageCountPerThread">5000</int>
+
     <!-- UAProf URL -->
     <string name="uaProfUrl">http://device.sprintpcs.com/Samsung/SPH-D720/latest</string>
+
+    <!-- Maximum number of recipients allowed per message. Use a value of -1
+         to indicate no limit. -->
+    <int name="recipientLimit">-1</int>
 
     <!-- Maximum number of SMS message segments in a long text message before converting
          the SMS message to an MMS message. -->
