@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2007 The Android Open Source Project
+<!-- Copyright (C) 2009 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -14,11 +14,7 @@
      limitations under the License.
 -->
 
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="additional_system_update">com.samsung.update</string>
-    <string name="additional_system_update_menu">com.samsung.update.UpdateSetting</string>
-
-    <!-- If false, MIN is displayed. If true, MSID is displayed. -->
-    <bool name="config_msid_enable">true</bool>
-
+<resources>
+    <!-- Additional System Update menu(Update PRL, Update Profile) is displayed if it is true -->
+    <bool name="config_additional_system_update_setting_enable">true</bool>
 </resources>

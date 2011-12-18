@@ -17,22 +17,12 @@
 # Product-specific compile-time definitions.
 #
 
-# Set this up here so that BoardConfigVendor.mk can override it
-BOARD_USES_GENERIC_AUDIO := false
-
-BOARD_USES_LIBSECRIL_STUB := true
-
-BOARD_NO_PAGE_FLIPPING := true
-BOARD_NO_32BPP := true
-
-# Enable NFC
-BOARD_HAVE_NFC := true
-
 # Use the non-open-source parts, if they're present
 -include vendor/samsung/crespo/BoardConfig4gVendor.mk
 
 # Use the parts that are common between all crespos
 include device/samsung/crespo/BoardConfigCommon.mk
 
+# Use crespo4g-specific variants
 #TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_crespo4g
 TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/crespo4g

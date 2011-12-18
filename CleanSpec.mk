@@ -43,19 +43,9 @@
 #$(call add-clean-step, rm -rf $(OUT_DIR)/target/common/obj/JAVA_LIBRARIES/core_intermediates)
 #$(call add-clean-step, find $(OUT_DIR) -type f -name "IGTalkSession*" -print0 | xargs -0 rm -f)
 #$(call add-clean-step, rm -rf $(PRODUCT_OUT)/data/*)
-$(call add-clean-step, find $(PRODUCT_OUT) -name "*.apk" | xargs rm)
 
 # ************************************************
 # NEWER CLEAN STEPS MUST BE AT THE END OF THE LIST
 # ************************************************
-$(call add-clean-step, rm -rf $(TARGET_OUT)/build.prop)
-$(call add-clean-step, rm -rf $(OUT_DIR)/target/product/crespo4g/obj/SHARED_LIBRARIES/libaudio_intermediates)
-$(call add-clean-step, rm -rf $(OUT_DIR)/target/product/crespo4g/obj/SHARED_LIBRARIES/libaudio_intermediates)
-$(call add-clean-step, rm -rf $(OUT_DIR)/target/product/crespo4g/obj/STATIC_LIBRARIES/libasound_intermediates)
-$(call add-clean-step, rm -rf $(OUT_DIR)/target/product/crespo4g/obj/EXECUTABLES/alsa_*)
-$(call add-clean-step, rm -rf $(OUT_DIR)/target/product/crespo4g/system/bin/alsa_*)
-$(call add-clean-step, rm -rf $(OUT_DIR)/target/product/crespo4g/system/etc/asound.conf)
-$(call add-clean-step, rm -rf $(OUT_DIR)/target/product/crespo4g/system/usr/share/alsa)
-$(call add-clean-step, rm -rf $(OUT_DIR)/target/product/crespo4g/obj/PACKAGING/systemimage_intermediates)
-$(call add-clean-step, rm -rf $(OUT_DIR)/target/product/crespo4g/obj/SHARED_LIBRARIES/libaudio_intermediates)
+
 $(call add-clean-step, rm -f $(PRODUCT_OUT)/system/etc/permissions/android.hardware.telephony.gsm.xml)
