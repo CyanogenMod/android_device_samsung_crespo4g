@@ -29,6 +29,7 @@ on boot
 
 # create data/gps for GPS demon
     mkdir /data/gps 770 gps system
+    restorecon /data/gps
     chown gps system /data/gps
 
 # cpufreq, set ondemand governor
@@ -39,6 +40,7 @@ on fs
     mount yaffs2 mtd@efs /efs nosuid nodev
 	chmod 770 /efs/bluetooth
 	chmod 770 /efs/imei
+	restorecon /efs
     mount_all /fstab.herring
 
     export EXTERNAL_STORAGE /storage/sdcard0
