@@ -9,3 +9,4 @@
 /recovery	mtd		recovery
 /bootloader	mtd		bootloader
 /radio		mtd		radio
+/wimax		mtd		wimax
