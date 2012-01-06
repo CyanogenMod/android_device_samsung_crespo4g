@@ -37,7 +37,7 @@
 
     <!-- Maximum number of SMS message segments in a long text message before converting
          the SMS message to an MMS message. -->
-    <int name="smsToMmsTextThreshold">2</int>
+    <int name="smsToMmsTextThreshold">4</int>
 
     <!-- If true, The text message over 160 characters will be sent in multi part.
          If false, The text message over 160 characters will be sent
@@ -51,7 +51,7 @@
 
     <!-- Maximum length for message text. Use a value of -1
          to indicate default value -->
-    <int name="maxMessageTextSize">160</int>
+    <int name="maxMessageTextSize">-1</int>
 
     <!-- User-Agent parameter used in MMS http request -->
     <string name="userAgent">SPH-D720/Android-mms</string>
