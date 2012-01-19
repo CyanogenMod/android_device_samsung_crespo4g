@@ -20,6 +20,10 @@
 # Use the non-open-source parts, if they're present
 -include vendor/samsung/crespo/BoardConfig4gVendor.mk
 
+# Use the open-source board-info file if none was set by the vendor
+# config.
+TARGET_BOARD_INFO_FILE ?= device/samsung/crespo4g/board-info.txt
+
 # Use the parts that are common between all crespos
 include device/samsung/crespo/BoardConfigCommon.mk
 

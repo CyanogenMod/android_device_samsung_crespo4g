@@ -1,3 +1,6 @@
+# This is the open-source version of board-info.txt; it should contain
+# version of the radio and bootloader that are available to the
+# public.
 require board=herring
 require version-bootloader=D720SPRKC5|D720SPRKE1
 require version-baseband=D720SPRKC9|D720SPRKD8|D720SPRKE5|D720SPRKH1|D720SPRKL1|D720SPRKL2
