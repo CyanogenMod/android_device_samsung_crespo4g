@@ -93,6 +93,18 @@
         <item>7</item>
     </integer-array>
 
+    <!-- If the DUN connection for this CDMA device supports more than just DUN -->
+    <!-- traffic you should list them here. -->
+    <!-- If this device is not CDMA this is ignored.  If this list is empty on -->
+    <!-- a DUN-requireing CDMA device, the DUN APN will support -->
+    <!-- just DUN. -->
+    <string-array translatable="false" name="config_cdma_dun_supported_types">
+        <item>"default"</item>
+        <item>"dun"</item>
+        <item>"mms"</item>
+        <item>"supl</item>
+    </string-array>
+
     <!-- Set and Unsets WiMAX -->
     <bool name="config_wimaxEnabled">true</bool>
     <!-- Location of the wimax framwork jar location -->
