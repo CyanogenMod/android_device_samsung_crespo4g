@@ -19,10 +19,6 @@
 # product configuration (apps).
 #
 
-# Camera
-PRODUCT_PACKAGES := \
-    Camera
-
 # Live Wallpapers
 PRODUCT_PACKAGES += \
         LiveWallpapers \
