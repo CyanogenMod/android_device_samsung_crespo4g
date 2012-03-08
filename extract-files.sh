@@ -18,41 +18,93 @@
 
 DEVICE=crespo4g
 MANUFACTURER=samsung
+EXT_F=EXTRACT_ROM_FILES
+
+prop_list="system/lib/libsecril-client.so \
+system/lib/libWiMAXNative.so \
+system/vendor/bin/gpsd \
+system/vendor/bin/pvrsrvinit \
+system/vendor/firmware/bcm4329.hcd \
+system/vendor/firmware/cypress-touchkey.bin \
+system/vendor/firmware/libpn544_fw.so \
+system/vendor/firmware/wimaxfw.bin \
+system/vendor/firmware/wimaxloader.bin \
+system/vendor/firmware/wimax_boot.bin \
+system/vendor/lib/egl/libEGL_POWERVR_SGX540_120.so \
+system/vendor/lib/egl/libGLESv1_CM_POWERVR_SGX540_120.so \
+system/vendor/lib/egl/libGLESv2_POWERVR_SGX540_120.so \
+system/vendor/lib/hw/gps.s5pc110.so \
+system/vendor/lib/hw/gralloc.s5pc110.so \
+system/vendor/lib/libakm.so \
+system/vendor/lib/libglslcompiler.so \
+system/vendor/lib/libIMGegl.so \
+system/vendor/lib/libpvr2d.so \
+system/vendor/lib/libpvrANDROID_WSEGL.so \
+system/vendor/lib/libPVRScopeServices.so \
+system/vendor/lib/libsec-ril.so \
+system/vendor/lib/libSECmWiMAXcAPI.so \
+system/vendor/lib/libsrv_init.so \
+system/vendor/lib/libsrv_um.so \
+system/vendor/lib/libusc.so \
+system/vendor/lib/wimax_service.jar"
+
+prop_apk_list="system/app/SprintMenu.apk \
+system/app/SystemUpdateUI.apk \
+system/app/WiMAXHiddenMenu.apk \
+system/app/WiMAXSettings.apk"
+
+chmod_list="gpsd \
+pvrsrvinit"
+
+pull_adb_files() {
+for x in ${prop_list} ${prop_apk_list}; do
+        echo "Pulling ${x} from adb connection now..."
+        adb pull /${x} ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/
+done
+
+cchm=$(echo ${chmod_list} |wc -w)
+if [ ${cchm} -gt 0 ]; then
+for x in ${chmod_list}; do
+        s=$(echo "$x" |awk -F/ '{print $NF}')
+	echo "Fixing permissions for ${x} from now..."
+        chmod 755 ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/${s}
+done
+fi
+}
+
+pull_zip_files() {
+if [ -d ${EXT_F} ]; then
+        rm -rf ${EXT_F}
+fi
+unzip ${ZIP} -d ${EXT_F}
+
+for x in ${prop_list} ${prop_apk_list}; do
+        echo "Copying ${x} from ${ZIP} now..."
+        cp ${EXT_F}/${x} ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/
+done
+
+cchm=$(echo ${chmod_list} |wc -w)
+if [ ${cchm} -gt 0 ]; then
+for x in ${chmod_list}; do
+        s=$(echo "$x" |awk -F/ '{print $NF}')
+	echo "Fixing permissions for ${s} from now..."
+        chmod 755 ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/${s}
+done
+fi
+}
 
 mkdir -p ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
-adb pull /system/app/SprintMenu.apk ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/SprintMenu.apk
-adb pull /system/app/SystemUpdateUI.apk ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/SystemUpdateUI.apk
-adb pull /system/app/WiMAXHiddenMenu.apk ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/WiMAXHiddenMenu.apk
-adb pull /system/app/WiMAXSettings.apk ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/WiMAXSettings.apk
-adb pull /system/lib/libsecril-client.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libsecril-client.so
-adb pull /system/lib/libWiMAXNative.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libWiMAXNative.so
-adb pull /system/vendor/bin/gpsd ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/gpsd
-chmod 755 ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/gpsd
-adb pull /system/vendor/bin/pvrsrvinit ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/pvrsrvinit
-chmod 755 ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/pvrsrvinit
-adb pull /system/vendor/firmware/bcm4329.hcd ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/bcm4329.hcd
-adb pull /system/vendor/firmware/cypress-touchkey.bin ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/cypress-touchkey.bin
-adb pull /system/vendor/firmware/libpn544_fw.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libpn544_fw.so
-adb pull /system/vendor/firmware/wimaxfw.bin ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/wimaxfw.bin
-adb pull /system/vendor/firmware/wimaxloader.bin ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/wimaxloader.bin
-adb pull /system/vendor/firmware/wimax_boot.bin ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/wimax_boot.bin
-adb pull /system/vendor/lib/egl/libEGL_POWERVR_SGX540_120.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libEGL_POWERVR_SGX540_120.so
-adb pull /system/vendor/lib/egl/libGLESv1_CM_POWERVR_SGX540_120.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libGLESv1_CM_POWERVR_SGX540_120.so
-adb pull /system/vendor/lib/egl/libGLESv2_POWERVR_SGX540_120.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libGLESv2_POWERVR_SGX540_120.so
-adb pull /system/vendor/lib/hw/gps.s5pc110.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/gps.s5pc110.so
-adb pull /system/vendor/lib/hw/gralloc.s5pc110.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/gralloc.s5pc110.so
-adb pull /system/vendor/lib/libakm.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libakm.so
-adb pull /system/vendor/lib/libglslcompiler.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libglslcompiler.so
-adb pull /system/vendor/lib/libIMGegl.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libIMGegl.so
-adb pull /system/vendor/lib/libpvr2d.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libpvr2d.so
-adb pull /system/vendor/lib/libpvrANDROID_WSEGL.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libpvrANDROID_WSEGL.so
-adb pull /system/vendor/lib/libPVRScopeServices.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libPVRScopeServices.so
-adb pull /system/vendor/lib/libsec-ril.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libsec-ril.so
-adb pull /system/vendor/lib/libSECmWiMAXcAPI.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libSECmWiMAXcAPI.so
-adb pull /system/vendor/lib/libsrv_init.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libsrv_init.so
-adb pull /system/vendor/lib/libsrv_um.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libsrv_um.so
-adb pull /system/vendor/lib/libusc.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libusc.so
-adb pull /system/vendor/lib/wimax_service.jar ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/wimax_service.jar
+
+if [ $# -eq  0 ]; then
+	pull_adb_files
+elif [ $# -eq 1 ]; then
+	ZIP="${1}"
+	pull_zip_files
+else
+	echo "Error: Too many arguments. Wanted 1 got $#"
+	exit 1
+fi
+
 
 (cat << EOF) | sed s/__DEVICE__/$DEVICE/g | sed s/__MANUFACTURER__/$MANUFACTURER/g > ../../../vendor/$MANUFACTURER/$DEVICE/device-vendor-blobs.mk
 # Copyright (C) 2010 The Android Open Source Project
@@ -71,40 +123,6 @@ adb pull /system/vendor/lib/wimax_service.jar ../../../vendor/$MANUFACTURER/$DEV
 
 # This file is generated by device/__MANUFACTURER__/__DEVICE__/extract-files.sh - DO NOT EDIT
 
-# Prebuilt libraries that are needed to build open-source libraries
-PRODUCT_COPY_FILES := \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libsecril-client.so:obj/lib/libsecril-client.so
-
-# All the blobs necessary for crespo4g
-PRODUCT_COPY_FILES += \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libsecril-client.so:system/lib/libsecril-client.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libWiMAXNative.so:system/lib/libWiMAXNative.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/gpsd:system/vendor/bin/gpsd \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/pvrsrvinit:system/vendor/bin/pvrsrvinit \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/bcm4329.hcd:system/vendor/firmware/bcm4329.hcd \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/cypress-touchkey.bin:system/vendor/firmware/cypress-touchkey.bin \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libpn544_fw.so:system/vendor/firmware/libpn544_fw.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/wimaxfw.bin:system/vendor/firmware/wimaxfw.bin \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/wimaxloader.bin:system/vendor/firmware/wimaxloader.bin \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/wimax_boot.bin:system/vendor/firmware/wimax_boot.bin \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libEGL_POWERVR_SGX540_120.so:system/vendor/lib/egl/libEGL_POWERVR_SGX540_120.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libGLESv1_CM_POWERVR_SGX540_120.so:system/vendor/lib/egl/libGLESv1_CM_POWERVR_SGX540_120.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libGLESv2_POWERVR_SGX540_120.so:system/vendor/lib/egl/libGLESv2_POWERVR_SGX540_120.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/gps.s5pc110.so:system/vendor/lib/hw/gps.s5pc110.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/gralloc.s5pc110.so:system/vendor/lib/hw/gralloc.s5pc110.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libakm.so:system/vendor/lib/libakm.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libglslcompiler.so:system/vendor/lib/libglslcompiler.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libIMGegl.so:system/vendor/lib/libIMGegl.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libpvr2d.so:system/vendor/lib/libpvr2d.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libpvrANDROID_WSEGL.so:system/vendor/lib/libpvrANDROID_WSEGL.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libPVRScopeServices.so:system/vendor/lib/libPVRScopeServices.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libsec-ril.so:system/vendor/lib/libsec-ril.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libSECmWiMAXcAPI.so:system/vendor/lib/libSECmWiMAXcAPI.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libsrv_init.so:system/vendor/lib/libsrv_init.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libsrv_um.so:system/vendor/lib/libsrv_um.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libusc.so:system/vendor/lib/libusc.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/wimax_service.jar:system/vendor/lib/wimax_service.jar
-
 # All the apks necessary for crespo4g
 PRODUCT_PACKAGES += \\
     SprintMenu \\
@@ -112,7 +130,20 @@ PRODUCT_PACKAGES += \\
     WiMAXHiddenMenu \\
     WiMAXSettings
 
+# All the blobs necessary for crespo4g
+PRODUCT_COPY_FILES += \\
 EOF
+chk_count=$(echo ${prop_list} |wc -w)
+COUNT=0
+for x in ${prop_list}; do
+        COUNT=`expr ${COUNT} + 1`
+        s=$(echo "$x" |awk -F/ '{print $NF}')
+        if [ ${COUNT} -eq ${chk_count} ]; then
+                echo "    vendor/$MANUFACTURER/$DEVICE/proprietary/${s}:${x}" >> ../../../vendor/$MANUFACTURER/$DEVICE/device-vendor-blobs.mk
+        else
+                echo "    vendor/$MANUFACTURER/$DEVICE/proprietary/${s}:${x} \\" >> ../../../vendor/$MANUFACTURER/$DEVICE/device-vendor-blobs.mk
+        fi
+done
 
 (cat << EOF) | sed s/__DEVICE__/$DEVICE/g | sed s/__MANUFACTURER__/$MANUFACTURER/g > ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/Android.mk
 # Copyright (C) 2011 The Android Open Source Project
