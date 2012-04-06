@@ -87,16 +87,27 @@
     <!-- Common options are [1, 4] for wifi and dun or [0,1,5,7] for -->
     <!-- mobile, wifi, hipri and bluetooth -->
     <integer-array translatable="false" name="config_tether_upstream_types">
-        <item>0</item>
         <item>1</item>
-        <item>5</item>
         <item>6</item>
         <item>7</item>
+        <item>4</item>
     </integer-array>
 
     <!-- If this value is true, The mms content-disposition field is supported correctly.
         If false, Content-disposition fragments are ignored -->
     <bool name="config_mms_content_disposition_support">false</bool>
+
+    <!-- If the DUN connection for this CDMA device supports more than just DUN -->
+    <!-- traffic you should list them here. -->
+    <!-- If this device is not CDMA this is ignored.  If this list is empty on -->
+    <!-- a DUN-requireing CDMA device, the DUN APN will support -->
+    <!-- just DUN. -->
+    <string-array translatable="false" name="config_cdma_dun_supported_types">
+        <item>"default"</item>
+        <item>"dun"</item>
+        <item>"mms"</item>
+        <item>"supl</item>
+    </string-array>
 
     <!-- Set and Unsets WiMAX -->
     <bool name="config_wimaxEnabled">true</bool>
