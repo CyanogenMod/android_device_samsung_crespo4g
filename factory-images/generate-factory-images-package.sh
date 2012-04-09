@@ -15,14 +15,15 @@
 # limitations under the License.
 
 # 185293 = GWK74
+# 299849 = IMM76D
 
 PRODUCT=sojus
 DEVICE=crespo4g
-BUILD=185293
-VERSION=gwk74
+BUILD=299849
+VERSION=imm76d
 BOOTLOADER=d720sprke1
 BOOTLOADERSRC=bootloader.pr.img
-RADIO=d720sprkh1
+RADIO=d720sprlc1
 RADIOSRC=radio.pr.img
 
 source ../../../common/generate-factory-images-common.sh
