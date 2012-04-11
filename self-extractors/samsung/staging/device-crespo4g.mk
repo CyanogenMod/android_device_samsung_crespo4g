@@ -25,7 +25,7 @@ PRODUCT_COPY_FILES += \
 
 # Samsung blobs necessary for CDMA/WiMAX on Nexus S hardware
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/proprietary/libWiMAXNativeODB.so:system/lib/libWiMAXNativeODB.so \
+    $(LOCAL_PATH)/proprietary/libWiMAXNative.so:system/lib/libWiMAXNative.so \
     $(LOCAL_PATH)/proprietary/wimaxfw.bin:system/vendor/firmware/wimaxfw.bin \
     $(LOCAL_PATH)/proprietary/wimaxloader.bin:system/vendor/firmware/wimaxloader.bin \
     $(LOCAL_PATH)/proprietary/wimax_boot.bin:system/vendor/firmware/wimax_boot.bin \
@@ -36,7 +36,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES := \
     WiMAXSettings \
     SprintMenu \
-    ODB \
+    WiMAXHiddenMenu \
     SystemUpdateUI
 
 # Overlay for WiMAX-related settings
