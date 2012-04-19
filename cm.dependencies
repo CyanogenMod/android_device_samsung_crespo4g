@@ -3,5 +3,10 @@
       "repository": "android_kernel_samsung_crespo",
       "target_path": "kernel/samsung/crespo",
       "branch": "ics"
+    },
+    {
+      "repository": "android_device_samsung_crespo4g",
+      "target_path": "device/samsung/crespo",
+      "branch": "ics"
     }
 ]
