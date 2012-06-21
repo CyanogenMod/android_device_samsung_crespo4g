@@ -121,4 +121,7 @@
     <!-- Set to true if the RSSI should always display CDMA signal
          strength even on EVDO -->
     <bool name="config_alwaysUseCdmaRssi">true</bool>
+
+    <!-- Set to true to add links to Cell Broadcast app from Settings and MMS app. -->
+    <bool name="config_cellBroadcastAppLinks">true</bool>
 </resources>
