@@ -18,6 +18,7 @@
 /system/app/SystemUpdateUI.apk
 /system/app/WiMAXHiddenMenu.apk
 /system/app/WiMAXSettings.apk
+/system/lib/libdrmdecrypt.so
 /system/lib/libsecril-client.so
 /system/lib/libWiMAXNative.so
 /system/vendor/bin/gpsd
