@@ -2,5 +2,5 @@
 # version of the radio and bootloader that are available to the
 # public.
 require board=herring
-require version-bootloader=D720SPRKE1
+require version-bootloader=D720SPRKE1|D720SPRLC1
 require version-baseband=D720SPRLC1
