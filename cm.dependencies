@@ -2,11 +2,11 @@
     {
       "repository": "android_kernel_samsung_crespo",
       "target_path": "kernel/samsung/crespo",
-      "branch": "ics"
+      "branch": "jb"
     },
     {
       "repository": "android_device_samsung_crespo",
       "target_path": "device/samsung/crespo",
-      "branch": "ics"
+      "branch": "jellybean"
     }
 ]
