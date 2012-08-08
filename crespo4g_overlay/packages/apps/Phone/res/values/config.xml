@@ -23,4 +23,7 @@
     <!-- Disables Voice Privacy option in the Other call settings section of Call Settings -->
     <bool name="config_voice_privacy_disable">true</bool>
 
+    <!-- Sprint Message Wait Indicator Quirk -->
+    <bool name="sprint_mwi_quirk">true</bool>
+
 </resources>
