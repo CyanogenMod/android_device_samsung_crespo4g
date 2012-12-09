@@ -24,6 +24,6 @@
     <bool name="config_voice_privacy_disable">true</bool>
 
     <!-- Sprint Message Wait Indicator Quirk -->
-    <bool name="sprint_mwi_quirk">true</bool>
+    <!-- <bool name="sprint_mwi_quirk">true</bool> -->
 
 </resources>
